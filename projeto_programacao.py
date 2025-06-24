@@ -133,6 +133,7 @@ subfuncionalidades = {
 
 # FUNÇÕES
 def verifica_se_existe_veiculo(id_auto):
+    ''' retorna True se o veículo existe e se ele não está vendido'''
     for veiculo in veiculos:
         if veiculo['id_auto'] == id_auto:
             if veiculo['vendido'] == False:
@@ -276,40 +277,45 @@ def edita_veiculo(**kwargs):
         mostra_caminho_percorrido(kwargs)
         id_veiculo = input('Digite o ID do veículo para editar: ') # TODO ver se o veículo existe
         
-        print('-'*50)
-        for veiculo in veiculos:
-            if veiculo['id_auto'] == id_veiculo:
-                nome_veiculo = relatorio_veiculos_estoque(veiculo=id_veiculo)
-                print('-'*50)
-                campo = input(f'Qual campo editar para {nome_veiculo}?\nCampos Válidos [marca, modelo, ano, valor_compra, estado ou "todos"]: ')
 
-                if campo.lower() == 'todos':
-                    for _ in veiculo.keys():
-                        nova_marca = input('Digite a marca do veículo: ')
-                        novo_modelo = input('Digite o modelo do veículo: ')
-                        novo_ano = input('Digite o ano do veículo: ')
-                        novo_val_compra = input('Digite o valor de compra: ') 
-                        novo_estado = input('Digite o estado de conservação: ')
+        if verifica_se_existe_veiculo(id_veiculo):
 
-                        veiculo['marca'] = nova_marca
-                        veiculo['modelo'] = novo_modelo
-                        veiculo['ano'] = novo_ano
-                        veiculo['valor_compra'] = novo_val_compra
-                        veiculo['estado'] = novo_estado
-                        nome_veiculo_novo = relatorio_veiculos_estoque(veiculo=id_veiculo)
-                        print(f'Todos os campos do veiculo {nome_veiculo}->{nome_veiculo_novo} foram editados com sucesso!')
+            print('-'*50)
+            for veiculo in veiculos:
+                if veiculo['id_auto'] == id_veiculo:
+                    nome_veiculo = relatorio_veiculos_estoque(veiculo=id_veiculo)
+                    print('-'*50)
+                    campo = input(f'Qual campo editar para {nome_veiculo}?\nCampos Válidos [marca, modelo, ano, valor_compra, estado ou "todos"]: ')
+
+                    if campo.lower() == 'todos':
+                        for _ in veiculo.keys():
+                            nova_marca = input('Digite a marca do veículo: ')
+                            novo_modelo = input('Digite o modelo do veículo: ')
+                            novo_ano = input('Digite o ano do veículo: ')
+                            novo_val_compra = input('Digite o valor de compra: ') 
+                            novo_estado = input('Digite o estado de conservação: ')
+
+                            veiculo['marca'] = nova_marca
+                            veiculo['modelo'] = novo_modelo
+                            veiculo['ano'] = novo_ano
+                            veiculo['valor_compra'] = novo_val_compra
+                            veiculo['estado'] = novo_estado
+                            nome_veiculo_novo = relatorio_veiculos_estoque(veiculo=id_veiculo)
+                            print(f'Todos os campos do veiculo {nome_veiculo}->{nome_veiculo_novo} foram editados com sucesso!')
+                            return None
+                    if campo.lower() in ['marca','modelo', 'ano', 'valor_compra', 'estado']:
+                        veiculo[campo.lower()] = input(f'Digite o novo {campo.lower()}: ')
+                        print(f'Dados de {campo.lower()} do veículo {nome_veiculo} editados com sucesso!')
                         return None
-                if campo.lower() in ['marca','modelo', 'ano', 'valor_compra', 'estado']:
-                    veiculo[campo.lower()] = input(f'Digite o novo {campo.lower()}: ')
-                    print(f'Dados de {campo.lower()} do veículo {nome_veiculo} editados com sucesso!')
-                    return None
+                    else:
+                        print('Digite um campo válido')
+                        return None
                 else:
-                    print('Digite um campo válido')
+                    print('Nenhum veículo encontrado...')
                     return None
-            else:
-                print('Nenhum veículo encontrado...')
-                return None
-            
+        else:
+            print('Veículo não cadastrado ou já foi vendido')
+
 def exclui_veiculo(**kwargs):
     if kwargs:
         kwargs['funcao'] = 'Excluir'
@@ -571,7 +577,13 @@ def menu_principal():
     return acao_selecionada
 
 def submenu(acao):
-    if acao:
+    
+    try:
+        acao = int(acao)
+        if acao not in funcionalidades:
+            print(f'Ação inválida: {acao}. Tente novamente')
+            return None
+    
         print(f'SUBMENU > {funcionalidades[int(acao)]}')
         print('\nEscolha uma Funcionalidade:\n')
         acoes_possiveis = subfuncionalidades[int(acao)]
@@ -593,23 +605,29 @@ def submenu(acao):
         limpatela()
         return acao_selecionada
     
-    else:
-        raise 'ERRO'
+    except ValueError:
+        print('Digite um número válido')
+        return None
+    
+    except KeyError:
+        print('Opção inexistente.')
+        return None
+
 
 ##################
 mapa_funcoes = {
-     '1.1' : cadastra_cliente,                   # FEITO
-     '1.2' : edita_cliente,                      # FEITO
-     '1.3' : exclui_cliente,                     # FEITO
-     '2.1' : cadastra_veiculo,                   # FEITO
-     '2.2' : edita_veiculo,                      # FEITO
-     '2.3' : exclui_veiculo,                     # FEITO
-     '3.1' : cadastra_servicos_veiculo,          # FEITO
-     '4.1' : registra_venda_veiculo,             # FEITO
-     '5.1' : relatorio_veiculos_estoque,         # FEITO
-     '5.2' : relatorio_veiculo_servicos,         # FEITO
-     '5.3' : relatorio_vendas,                   # FEITO
-     '5.4' : listar_clientes,                    # FEITO
+     '1.1' : cadastra_cliente,                   # Ok
+     '1.2' : edita_cliente,                      # Ok
+     '1.3' : exclui_cliente,                     # Ok
+     '2.1' : cadastra_veiculo,                   # Ok
+     '2.2' : edita_veiculo,                      # Ok
+     '2.3' : exclui_veiculo,                     # Ok
+     '3.1' : cadastra_servicos_veiculo,          # Ok
+     '4.1' : registra_venda_veiculo,             # Ok
+     '5.1' : relatorio_veiculos_estoque,         # Ok
+     '5.2' : relatorio_veiculo_servicos,         # Ok
+     '5.3' : relatorio_vendas,                   # Ok
+     '5.4' : listar_clientes,                    # Ok
  }   
 
 # sistema

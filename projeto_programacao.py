@@ -5,94 +5,100 @@ TODO modularizar o código,
 '''
 
 # DADOS MOCKADOS
-clientes = [
-    {'nome': 'João da Silva', 'cpf': '1', 'email': 'joao.silva@email.com'},
-    {'nome': 'Maria Oliveira', 'cpf': '2', 'email': 'maria.oliveira@email.com'},
-    {'nome': 'Carlos Pereira', 'cpf': '3', 'email': 'carlos.pereira@email.com'},
-    {'nome': 'Ana Santos', 'cpf': '4', 'email': 'ana.santos@gmail.com'},
-    {'nome': 'Pedro Costa', 'cpf': '5', 'email': 'pedro.costa@hotmail.com'},
-    {'nome': 'Lucia Ferreira', 'cpf': '6', 'email': 'lucia.ferreira@yahoo.com'},
-    {'nome': 'Roberto Almeida', 'cpf': '7', 'email': 'roberto.almeida@outlook.com'},
-    {'nome': 'Fernanda Lima', 'cpf': '8', 'email': 'fernanda.lima@email.com'},
-    {'nome': 'José Rodrigues', 'cpf': '9', 'email': 'jose.rodrigues@gmail.com'},
-    {'nome': 'Carla Mendes', 'cpf': '10', 'email': 'carla.mendes@email.com'},
-    {'nome': 'Marcos Souza', 'cpf': '11', 'email': 'marcos.souza@hotmail.com'},
-    {'nome': 'Sandra Nunes', 'cpf': '12', 'email': 'sandra.nunes@yahoo.com'},
-    {'nome': 'Antonio Barbosa', 'cpf': '13', 'email': 'antonio.barbosa@gmail.com'},
-    {'nome': 'Patricia Moreira', 'cpf': '14', 'email': 'patricia.moreira@outlook.com'},
-    {'nome': 'Rafael Cardoso', 'cpf': '15', 'email': 'rafael.cardoso@email.com'}
-]
+# clientes = [
+#     {'nome': 'João da Silva', 'cpf': '1', 'email': 'joao.silva@email.com'},
+#     {'nome': 'Maria Oliveira', 'cpf': '2', 'email': 'maria.oliveira@email.com'},
+#     {'nome': 'Carlos Pereira', 'cpf': '3', 'email': 'carlos.pereira@email.com'},
+#     {'nome': 'Ana Santos', 'cpf': '4', 'email': 'ana.santos@gmail.com'},
+#     {'nome': 'Pedro Costa', 'cpf': '5', 'email': 'pedro.costa@hotmail.com'},
+#     {'nome': 'Lucia Ferreira', 'cpf': '6', 'email': 'lucia.ferreira@yahoo.com'},
+#     {'nome': 'Roberto Almeida', 'cpf': '7', 'email': 'roberto.almeida@outlook.com'},
+#     {'nome': 'Fernanda Lima', 'cpf': '8', 'email': 'fernanda.lima@email.com'},
+#     {'nome': 'José Rodrigues', 'cpf': '9', 'email': 'jose.rodrigues@gmail.com'},
+#     {'nome': 'Carla Mendes', 'cpf': '10', 'email': 'carla.mendes@email.com'},
+#     {'nome': 'Marcos Souza', 'cpf': '11', 'email': 'marcos.souza@hotmail.com'},
+#     {'nome': 'Sandra Nunes', 'cpf': '12', 'email': 'sandra.nunes@yahoo.com'},
+#     {'nome': 'Antonio Barbosa', 'cpf': '13', 'email': 'antonio.barbosa@gmail.com'},
+#     {'nome': 'Patricia Moreira', 'cpf': '14', 'email': 'patricia.moreira@outlook.com'},
+#     {'nome': 'Rafael Cardoso', 'cpf': '15', 'email': 'rafael.cardoso@email.com'}
+# ]
 
-veiculos = [
-    {'id_auto': '1' , 'marca': 'Fiat', 'modelo': 'Uno', 'ano': '2012', 'valor_compra': 12000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '2' , 'marca': 'Volkswagen', 'modelo': 'Gol', 'ano': '2014', 'valor_compra': 15000.00, 'estado': '2', 'vendido': True},
-    {'id_auto': '3' , 'marca': 'Chevrolet', 'modelo': 'Onix', 'ano': '2018', 'valor_compra': 30000.00, 'estado': '1', 'vendido': True},
-    {'id_auto': '4' , 'marca': 'Honda', 'modelo': 'Civic', 'ano': '2020', 'valor_compra': 45000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '5' , 'marca': 'Toyota', 'modelo': 'Corolla', 'ano': '2019', 'valor_compra': 42000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '6' , 'marca': 'Ford', 'modelo': 'Ka', 'ano': '2015', 'valor_compra': 18000.00, 'estado': '2', 'vendido': True},
-    {'id_auto': '7' , 'marca': 'Hyundai', 'modelo': 'HB20', 'ano': '2017', 'valor_compra': 25000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '8' , 'marca': 'Nissan', 'modelo': 'March', 'ano': '2013', 'valor_compra': 16000.00, 'estado': '2', 'vendido': False},
-    {'id_auto': '9' , 'marca': 'Peugeot', 'modelo': '208', 'ano': '2016', 'valor_compra': 22000.00, 'estado': '1', 'vendido': True},
-    {'id_auto': '10', 'marca': 'Renault', 'modelo': 'Sandero', 'ano': '2014', 'valor_compra': 17000.00, 'estado': '2', 'vendido': False},
-    {'id_auto': '11', 'marca': 'Fiat', 'modelo': 'Palio', 'ano': '2010', 'valor_compra': 10000.00, 'estado': '3', 'vendido': False},
-    {'id_auto': '12', 'marca': 'Volkswagen', 'modelo': 'Fox', 'ano': '2011', 'valor_compra': 13000.00, 'estado': '2', 'vendido': False},
-    {'id_auto': '13', 'marca': 'Chevrolet', 'modelo': 'Celta', 'ano': '2009', 'valor_compra': 8000.00, 'estado': '3', 'vendido': False},
-    {'id_auto': '14', 'marca': 'Honda', 'modelo': 'Fit', 'ano': '2016', 'valor_compra': 28000.00, 'estado': '1', 'vendido': True},
-    {'id_auto': '15', 'marca': 'Toyota', 'modelo': 'Etios', 'ano': '2015', 'valor_compra': 21000.00, 'estado': '2', 'vendido': False},
-    {'id_auto': '16', 'marca': 'Ford', 'modelo': 'Fiesta', 'ano': '2013', 'valor_compra': 19000.00, 'estado': '2', 'vendido': False},
-    {'id_auto': '17', 'marca': 'Hyundai', 'modelo': 'i30', 'ano': '2018', 'valor_compra': 35000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '18', 'marca': 'Nissan', 'modelo': 'Versa', 'ano': '2017', 'valor_compra': 32000.00, 'estado': '1', 'vendido': True},
-    {'id_auto': '19', 'marca': 'Peugeot', 'modelo': '2008', 'ano': '2019', 'valor_compra': 38000.00, 'estado': '1', 'vendido': False},
-    {'id_auto': '20', 'marca': 'Renault', 'modelo': 'Captur', 'ano': '2020', 'valor_compra': 40000.00, 'estado': '1', 'vendido': False}
-]
+# veiculos = [
+#     {'id_auto': '1' , 'marca': 'Fiat', 'modelo': 'Uno', 'ano': '2012', 'valor_compra': 12000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '2' , 'marca': 'Volkswagen', 'modelo': 'Gol', 'ano': '2014', 'valor_compra': 15000.00, 'estado': '2', 'vendido': True},
+#     {'id_auto': '3' , 'marca': 'Chevrolet', 'modelo': 'Onix', 'ano': '2018', 'valor_compra': 30000.00, 'estado': '1', 'vendido': True},
+#     {'id_auto': '4' , 'marca': 'Honda', 'modelo': 'Civic', 'ano': '2020', 'valor_compra': 45000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '5' , 'marca': 'Toyota', 'modelo': 'Corolla', 'ano': '2019', 'valor_compra': 42000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '6' , 'marca': 'Ford', 'modelo': 'Ka', 'ano': '2015', 'valor_compra': 18000.00, 'estado': '2', 'vendido': True},
+#     {'id_auto': '7' , 'marca': 'Hyundai', 'modelo': 'HB20', 'ano': '2017', 'valor_compra': 25000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '8' , 'marca': 'Nissan', 'modelo': 'March', 'ano': '2013', 'valor_compra': 16000.00, 'estado': '2', 'vendido': False},
+#     {'id_auto': '9' , 'marca': 'Peugeot', 'modelo': '208', 'ano': '2016', 'valor_compra': 22000.00, 'estado': '1', 'vendido': True},
+#     {'id_auto': '10', 'marca': 'Renault', 'modelo': 'Sandero', 'ano': '2014', 'valor_compra': 17000.00, 'estado': '2', 'vendido': False},
+#     {'id_auto': '11', 'marca': 'Fiat', 'modelo': 'Palio', 'ano': '2010', 'valor_compra': 10000.00, 'estado': '3', 'vendido': False},
+#     {'id_auto': '12', 'marca': 'Volkswagen', 'modelo': 'Fox', 'ano': '2011', 'valor_compra': 13000.00, 'estado': '2', 'vendido': False},
+#     {'id_auto': '13', 'marca': 'Chevrolet', 'modelo': 'Celta', 'ano': '2009', 'valor_compra': 8000.00, 'estado': '3', 'vendido': False},
+#     {'id_auto': '14', 'marca': 'Honda', 'modelo': 'Fit', 'ano': '2016', 'valor_compra': 28000.00, 'estado': '1', 'vendido': True},
+#     {'id_auto': '15', 'marca': 'Toyota', 'modelo': 'Etios', 'ano': '2015', 'valor_compra': 21000.00, 'estado': '2', 'vendido': False},
+#     {'id_auto': '16', 'marca': 'Ford', 'modelo': 'Fiesta', 'ano': '2013', 'valor_compra': 19000.00, 'estado': '2', 'vendido': False},
+#     {'id_auto': '17', 'marca': 'Hyundai', 'modelo': 'i30', 'ano': '2018', 'valor_compra': 35000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '18', 'marca': 'Nissan', 'modelo': 'Versa', 'ano': '2017', 'valor_compra': 32000.00, 'estado': '1', 'vendido': True},
+#     {'id_auto': '19', 'marca': 'Peugeot', 'modelo': '2008', 'ano': '2019', 'valor_compra': 38000.00, 'estado': '1', 'vendido': False},
+#     {'id_auto': '20', 'marca': 'Renault', 'modelo': 'Captur', 'ano': '2020', 'valor_compra': 40000.00, 'estado': '1', 'vendido': False}
+# ]
 
-servicos = [
-    {'id_auto': '1' , 'descricao': 'Troca de óleo', 'valor': 150.00, 'data': '10/06/2025'},
-    {'id_auto': '1' , 'descricao': 'Alinhamento e balanceamento', 'valor': 200.00, 'data': '12/06/2025'},
-    {'id_auto': '1' , 'descricao': 'Troca de pastilhas de freio', 'valor': 280.00, 'data': '15/06/2025'},
-    {'id_auto': '3' , 'descricao': 'Revisão geral', 'valor': 500.00, 'data': '14/06/2025'},
-    {'id_auto': '3' , 'descricao': 'Troca de pneus', 'valor': 800.00, 'data': '16/06/2025'},
-    {'id_auto': '4' , 'descricao': 'Troca de óleo', 'valor': 180.00, 'data': '05/06/2025'},
-    {'id_auto': '4' , 'descricao': 'Limpeza de bicos injetores', 'valor': 350.00, 'data': '08/06/2025'},
-    {'id_auto': '4' , 'descricao': 'Troca de filtro de ar', 'valor': 120.00, 'data': '10/06/2025'},
-    {'id_auto': '5' , 'descricao': 'Revisão dos 10.000 km', 'valor': 450.00, 'data': '02/06/2025'},
-    {'id_auto': '5' , 'descricao': 'Troca de correias', 'valor': 300.00, 'data': '04/06/2025'},
-    {'id_auto': '7' , 'descricao': 'Troca de óleo', 'valor': 160.00, 'data': '01/06/2025'},
-    {'id_auto': '7' , 'descricao': 'Balanceamento', 'valor': 80.00, 'data': '03/06/2025'},
-    {'id_auto': '7' , 'descricao': 'Troca de velas', 'valor': 200.00, 'data': '06/06/2025'},
-    {'id_auto': '8' , 'descricao': 'Reparo no ar condicionado', 'valor': 400.00, 'data': '07/06/2025'},
-    {'id_auto': '8' , 'descricao': 'Troca de bateria', 'valor': 350.00, 'data': '09/06/2025'},
-    {'id_auto': '10', 'descricao': 'Troca de óleo', 'valor': 140.00, 'data': '11/06/2025'},
-    {'id_auto': '10', 'descricao': 'Reparo na suspensão', 'valor': 600.00, 'data': '13/06/2025'},
-    {'id_auto': '11', 'descricao': 'Reparo no motor', 'valor': 1200.00, 'data': '20/05/2025'},
-    {'id_auto': '11', 'descricao': 'Troca de embreagem', 'valor': 800.00, 'data': '25/05/2025'},
-    {'id_auto': '11', 'descricao': 'Pintura parcial', 'valor': 500.00, 'data': '28/05/2025'},
-    {'id_auto': '12', 'descricao': 'Troca de óleo', 'valor': 150.00, 'data': '30/05/2025'},
-    {'id_auto': '12', 'descricao': 'Alinhamento', 'valor': 100.00, 'data': '02/06/2025'},
-    {'id_auto': '13', 'descricao': 'Reparo na transmissão', 'valor': 900.00, 'data': '15/05/2025'},
-    {'id_auto': '13', 'descricao': 'Troca de pneus', 'valor': 600.00, 'data': '18/05/2025'},
-    {'id_auto': '13', 'descricao': 'Reparo elétrico', 'valor': 300.00, 'data': '22/05/2025'},
-    {'id_auto': '15', 'descricao': 'Revisão preventiva', 'valor': 400.00, 'data': '25/05/2025'},
-    {'id_auto': '15', 'descricao': 'Troca de filtros', 'valor': 180.00, 'data': '27/05/2025'},
-    {'id_auto': '16', 'descricao': 'Troca de óleo', 'valor': 155.00, 'data': '29/05/2025'},
-    {'id_auto': '16', 'descricao': 'Reparo no freio', 'valor': 320.00, 'data': '31/05/2025'},
-    {'id_auto': '17', 'descricao': 'Revisão completa', 'valor': 550.00, 'data': '03/06/2025'},
-    {'id_auto': '17', 'descricao': 'Troca de amortecedores', 'valor': 700.00, 'data': '05/06/2025'},
-    {'id_auto': '19', 'descricao': 'Troca de óleo', 'valor': 170.00, 'data': '07/06/2025'},
-    {'id_auto': '19', 'descricao': 'Calibragem de pneus', 'valor': 50.00, 'data': '09/06/2025'},
-    {'id_auto': '20', 'descricao': 'Primeira revisão', 'valor': 300.00, 'data': '11/06/2025'},
-    {'id_auto': '20', 'descricao': 'Enceramento', 'valor': 150.00, 'data': '13/06/2025'}
-]
+# servicos = [
+#     {'id_auto': '1' , 'descricao': 'Troca de óleo', 'valor': 150.00, 'data': '10/06/2025'},
+#     {'id_auto': '1' , 'descricao': 'Alinhamento e balanceamento', 'valor': 200.00, 'data': '12/06/2025'},
+#     {'id_auto': '1' , 'descricao': 'Troca de pastilhas de freio', 'valor': 280.00, 'data': '15/06/2025'},
+#     {'id_auto': '3' , 'descricao': 'Revisão geral', 'valor': 500.00, 'data': '14/06/2025'},
+#     {'id_auto': '3' , 'descricao': 'Troca de pneus', 'valor': 800.00, 'data': '16/06/2025'},
+#     {'id_auto': '4' , 'descricao': 'Troca de óleo', 'valor': 180.00, 'data': '05/06/2025'},
+#     {'id_auto': '4' , 'descricao': 'Limpeza de bicos injetores', 'valor': 350.00, 'data': '08/06/2025'},
+#     {'id_auto': '4' , 'descricao': 'Troca de filtro de ar', 'valor': 120.00, 'data': '10/06/2025'},
+#     {'id_auto': '5' , 'descricao': 'Revisão dos 10.000 km', 'valor': 450.00, 'data': '02/06/2025'},
+#     {'id_auto': '5' , 'descricao': 'Troca de correias', 'valor': 300.00, 'data': '04/06/2025'},
+#     {'id_auto': '7' , 'descricao': 'Troca de óleo', 'valor': 160.00, 'data': '01/06/2025'},
+#     {'id_auto': '7' , 'descricao': 'Balanceamento', 'valor': 80.00, 'data': '03/06/2025'},
+#     {'id_auto': '7' , 'descricao': 'Troca de velas', 'valor': 200.00, 'data': '06/06/2025'},
+#     {'id_auto': '8' , 'descricao': 'Reparo no ar condicionado', 'valor': 400.00, 'data': '07/06/2025'},
+#     {'id_auto': '8' , 'descricao': 'Troca de bateria', 'valor': 350.00, 'data': '09/06/2025'},
+#     {'id_auto': '10', 'descricao': 'Troca de óleo', 'valor': 140.00, 'data': '11/06/2025'},
+#     {'id_auto': '10', 'descricao': 'Reparo na suspensão', 'valor': 600.00, 'data': '13/06/2025'},
+#     {'id_auto': '11', 'descricao': 'Reparo no motor', 'valor': 1200.00, 'data': '20/05/2025'},
+#     {'id_auto': '11', 'descricao': 'Troca de embreagem', 'valor': 800.00, 'data': '25/05/2025'},
+#     {'id_auto': '11', 'descricao': 'Pintura parcial', 'valor': 500.00, 'data': '28/05/2025'},
+#     {'id_auto': '12', 'descricao': 'Troca de óleo', 'valor': 150.00, 'data': '30/05/2025'},
+#     {'id_auto': '12', 'descricao': 'Alinhamento', 'valor': 100.00, 'data': '02/06/2025'},
+#     {'id_auto': '13', 'descricao': 'Reparo na transmissão', 'valor': 900.00, 'data': '15/05/2025'},
+#     {'id_auto': '13', 'descricao': 'Troca de pneus', 'valor': 600.00, 'data': '18/05/2025'},
+#     {'id_auto': '13', 'descricao': 'Reparo elétrico', 'valor': 300.00, 'data': '22/05/2025'},
+#     {'id_auto': '15', 'descricao': 'Revisão preventiva', 'valor': 400.00, 'data': '25/05/2025'},
+#     {'id_auto': '15', 'descricao': 'Troca de filtros', 'valor': 180.00, 'data': '27/05/2025'},
+#     {'id_auto': '16', 'descricao': 'Troca de óleo', 'valor': 155.00, 'data': '29/05/2025'},
+#     {'id_auto': '16', 'descricao': 'Reparo no freio', 'valor': 320.00, 'data': '31/05/2025'},
+#     {'id_auto': '17', 'descricao': 'Revisão completa', 'valor': 550.00, 'data': '03/06/2025'},
+#     {'id_auto': '17', 'descricao': 'Troca de amortecedores', 'valor': 700.00, 'data': '05/06/2025'},
+#     {'id_auto': '19', 'descricao': 'Troca de óleo', 'valor': 170.00, 'data': '07/06/2025'},
+#     {'id_auto': '19', 'descricao': 'Calibragem de pneus', 'valor': 50.00, 'data': '09/06/2025'},
+#     {'id_auto': '20', 'descricao': 'Primeira revisão', 'valor': 300.00, 'data': '11/06/2025'},
+#     {'id_auto': '20', 'descricao': 'Enceramento', 'valor': 150.00, 'data': '13/06/2025'}
+# ]
 
-vendas = [
-    {'id_auto': '3' , 'cpf': '1', 'valor_venda': 32000.00, 'data_venda': '15/06/2025'},
-    {'id_auto': '2' , 'cpf': '2', 'valor_venda': 18000.00, 'data_venda': '16/06/2025'},
-    {'id_auto': '6' , 'cpf': '4', 'valor_venda': 22000.00, 'data_venda': '10/06/2025'},
-    {'id_auto': '9' , 'cpf': '5', 'valor_venda': 26000.00, 'data_venda': '12/06/2025'},
-    {'id_auto': '14', 'cpf': '7', 'valor_venda': 32000.00, 'data_venda': '08/06/2025'},
-    {'id_auto': '18', 'cpf': '8', 'valor_venda': 36000.00, 'data_venda': '05/06/2025'},
+# vendas = [
+#     {'id_auto': '3' , 'cpf': '1', 'valor_venda': 32000.00, 'data_venda': '15/06/2025'},
+#     {'id_auto': '2' , 'cpf': '2', 'valor_venda': 18000.00, 'data_venda': '16/06/2025'},
+#     {'id_auto': '6' , 'cpf': '4', 'valor_venda': 22000.00, 'data_venda': '10/06/2025'},
+#     {'id_auto': '9' , 'cpf': '5', 'valor_venda': 26000.00, 'data_venda': '12/06/2025'},
+#     {'id_auto': '14', 'cpf': '7', 'valor_venda': 32000.00, 'data_venda': '08/06/2025'},
+#     {'id_auto': '18', 'cpf': '8', 'valor_venda': 36000.00, 'data_venda': '05/06/2025'},
 
-]
+# ]
+
+
+clientes = []
+veiculos = []
+servicos = []
+vendas = []
 
 # ESTRUTURAS
 funcionalidades = {
@@ -234,7 +240,7 @@ def exclui_cliente(**kwargs):
 
         for cliente in clientes:
             if cliente['cpf'] == cpf:
-                del cliente['cpf']
+                clientes.remove(cliente)
                 print('Cliente DELETADO!')
     
     return 'exclui_cliente'
@@ -325,7 +331,7 @@ def exclui_veiculo(**kwargs):
 
         for veiculo in veiculos:
             if veiculo['id_auto'] == id_auto:
-                del veiculo['id_auto']
+                veiculos.remove(veiculo)
                 print('Veículo deletado!')
 
     return 'exclui_veiculo'
